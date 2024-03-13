@@ -4,16 +4,24 @@ const User = require("../models/User");
 // signup
 
 router.post("/signup", async (req, res) => {
-  const { name, email, password, picture } = req.body;
+  const { name, email, password, picture, phone, address } = req.body;
 
   try {
-    const user = await User.create({ name, email, password, picture });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      picture,
+      phone,
+      address,
+    });
     res.json(user);
   } catch (e) {
     if (e.code === 11000) return res.status(400).send("Email déja existe");
     res.status(400).send(e.message);
   }
 });
+
 
 // login
 
