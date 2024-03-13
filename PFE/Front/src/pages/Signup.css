@@ -1,0 +1,92 @@
+.signup__image--container {
+  background-image: url("https://th.bing.com/th/id/R.bf830d279302e3ebade63fa65ef2f32d?rik=WhNJnelKPEUtHg&pid=ImgRaw&r=0");
+  height: 60vh;
+  margin: auto;
+  background-position: center;
+  background-size: cover;
+  border-radius: 25px;
+}
+
+.signup__form--container,
+.login__form--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login__image--container {
+  background-image: url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+  height: 60vh;
+  margin: auto;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 756px) {
+  .login__image--container,
+  .signup__image--container {
+    display: none;
+  }
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bt {
+  height: 50px;
+  cursor: pointer;
+  background: #333;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444,
+    inset -5px -5px 10px #222;
+  color: #ffffff;
+  font-size: 16px;
+  transition: 500ms;
+}
+
+.bt:hover {
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
+    inset -5px -5px 10px #444;
+  font-size: 15px;
+}
+
+.bt:focus {
+  outline: none;
+}
+
+.blue:hover {
+  color: #71b7f0;
+  text-shadow: 0px 0px 10px #71b7f0;
+}
+
+.signup-profile-pic_container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+}
+.signup-profile-pic {
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  object-fit: cover;
+  height: 100px;
+}
+.add-picture-icon {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  color: green;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  z-index: 99;
+}

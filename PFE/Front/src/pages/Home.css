@@ -1,0 +1,41 @@
+.category-tile {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 30px;
+}
+
+.card {
+  border: none !important;
+  width: 17.5rem !important;
+  overflow: hidden;
+}
+
+.category-tile:hover {
+  transform: scale(1.05);
+}
+
+.sale__banner--container img {
+  max-width: 1200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.product {
+  box-shadow: 8px 4px 4px 8px rgb(68, 68, 68) inset;
+}
+
+@media screen and (max-width: 756px) {
+  .x {
+    display: none;
+  }
+}
