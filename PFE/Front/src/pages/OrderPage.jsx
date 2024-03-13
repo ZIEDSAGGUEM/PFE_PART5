@@ -29,54 +29,61 @@ function OrderPage() {
 
   const generatePDF = () => {
     const pdf = new jsPDF();
-    const yPos = pdf.getNumberOfPages() * 25;
+    let yPos = 10; // Initial y-position
     const prod = Object.values(orderToShow);
-    pdf.text(`Nom d'Utilisateur : ${user.name}`, 20, yPos + 10);
-    pdf.text(`Email d'Utilisateur : ${user.email}`, 20, yPos + 20);
+    // User details
+    pdf.setFontSize(12);
+    pdf.text(`Nom d'Utilisateur : ${user.name}`, 20, yPos);
+    pdf.text(`Email d'Utilisateur : ${user.email}`, 20, yPos + 10);
+
+    // Title
+    yPos += 20; // Adjust y-position
+    pdf.setFontSize(18);
+    pdf.setFont("bold");
+    pdf.text("Détails de Commande", 20, yPos);
+    yPos += 10; // Adjust y-position
+    pdf.text("Frais de Livraison: 8 TND", 30, yPos);
+    yPos += 10;
+    pdf.text(`Date: ${new Date().toLocaleString()}`, 40, yPos);
 
     // Iterate through each product
     prod.forEach((product, index) => {
-      const yPos = pdf.getNumberOfPages() * 25; // Adjust the y-position based on the page number
-
-      // Title
-      pdf.setFontSize(18);
-      pdf.setFont("bold");
-      pdf.text("Détails de Commande", 20, yPos);
+      yPos += 20; // Adjust y-position for the new product
 
       // Order ID and Date
+      yPos += 10; // Adjust y-position
       pdf.setFontSize(12);
       pdf.setFont("normal");
-
-      pdf.text(`Produit ID: ${product._id}`, 20, yPos + 30);
-      pdf.text(`Date: ${new Date().toLocaleString()}`, 20, yPos + 40);
+      pdf.text(`Produit ID: ${product._id}`, 20, yPos);
 
       // Product Details
-      pdf.text("Produit:", 20, yPos + 55);
-      pdf.addImage(product.pictures[0].url, "JPEG", 20, yPos + 60, 30, 30);
-      pdf.text(`Nom de Produit : ${product.name}`, 60, yPos + 70);
-      pdf.text(`Categorie: ${product.category}`, 60, yPos + 80);
-      pdf.text(`Prix: ${Number(product.price)} TND`, 60, yPos + 90);
-      pdf.text(`Nombre: ${product.count}`, 60, yPos + 100);
-      pdf.text("Frais de Livraison: 8 TND", 60, yPos + 110);
+      yPos += 20; // Adjust y-position
+      pdf.text("Produit:", 20, yPos);
+      pdf.addImage(product.pictures[0].url, "JPEG", 20, yPos + 5, 30, 30);
+      pdf.text(`Nom de Produit : ${product.name}`, 60, yPos + 10);
+      pdf.text(`Categorie: ${product.category}`, 60, yPos + 20);
+      pdf.text(`Prix: ${Number(product.price)} TND`, 60, yPos + 30);
+      pdf.text(`Nombre: ${product.count}`, 60, yPos + 40);
       pdf.text(
-        `Prix Totale: ${Number(product.price) * product.count - 8} TND`,
+        `Prix Totale: ${Number(product.price) * product.count} TND`,
         60,
-        yPos + 120
+        yPos + 60
       );
 
-      // Add other product details as needed
-
       // Add a separator line
-      pdf.line(25, yPos + 120, 195, yPos + 125);
+      yPos += 70; // Adjust y-position
+      pdf.line(25, yPos, 195, yPos);
 
       // Add page if it's not the last product
       if (index !== prod.length - 1) {
         pdf.addPage(); // Move to the next page for the next product
+        yPos = 10; // Reset y-position for new page
       }
     });
 
-    pdf.save("orders.pdf");
+    pdf.save(`${user.name} orders`);
   };
+
 
   useEffect(() => {
     setLoading(true);
