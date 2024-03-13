@@ -13,6 +13,8 @@ function Signup({ on, handleClick }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
   const [signup, { error, isLoading, isError }] = useSignupMutation();
   const [image, setImage] = useState(null);
   const [uploadingImg, setUploadingImg] = useState(false);
@@ -58,12 +60,14 @@ function Signup({ on, handleClick }) {
     if (!image) return alert("Please Upload your profile picture");
     const url = await uploadImage(image);
     console.log(url);
-    signup({ name, email, password, picture: url }).then(({ data }) => {
-      if (data) {
-        console.log(data);
-        navigate("/");
+    signup({ name, email, password, picture: url, address, phone }).then(
+      ({ data }) => {
+        if (data) {
+          console.log(data);
+          navigate("/");
+        }
       }
-    });
+    );
   }
 
   return (
@@ -149,6 +153,41 @@ function Signup({ on, handleClick }) {
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label
+                ref={divRef}
+                onMouseEnter={(e) => handleClick(e, on)}
+                tabIndex="0"
+                aria-label="Cliquez pour entendre le contenu"
+              >
+                Addresse
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Entrer Addresse"
+                value={address}
+                required
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label
+                ref={divRef}
+                onMouseEnter={(e) => handleClick(e, on)}
+                tabIndex="0"
+                aria-label="Cliquez pour entendre le contenu"
+              >
+                Téléphone
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Entrer Numéro de Téléphone"
+                value={phone}
+                required
+                onChange={(e) => setPhone(e.target.value)}
               />
             </Form.Group>
 
