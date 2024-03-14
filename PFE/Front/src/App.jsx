@@ -24,6 +24,7 @@ import { addNotification } from "./features/userSlice";
 import Success from "./components/Success";
 import UserCartPage from "./pages/UserCartPage";
 import Failure from "./components/Failure";
+import UpdateUser from "./pages/UpdateUser";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -97,6 +98,7 @@ function App() {
               <Route path="/cart" element={<UserCartPage />} />
               <Route path="/favorite" element={<FavoritePage />} />
               <Route path="/orders" element={<OrderPage />} />
+              <Route path="/update" element={<UpdateUser />} />
               <Route path="/success" element={<Success/>}/>
               <Route path="/failure" element={<Failure/>}/>
             </>
