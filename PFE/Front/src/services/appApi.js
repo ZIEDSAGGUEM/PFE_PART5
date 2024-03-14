@@ -21,6 +21,13 @@ export const appApi = createApi({
         body: user,
       }),
     }),
+    updateUser: builder.mutation({
+      query: ({ userId, userData }) => ({
+        url: `/users/update/${userId}`,
+        method: "POST",
+        body: userData,
+      }),
+    }),
     // creating product
     createProduct: builder.mutation({
       query: (product) => ({
