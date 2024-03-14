@@ -17,7 +17,7 @@ import {
 } from "../services/appApi";
 import CheckOutForm from "../components/CheckOutForm";
 import ToastMessage from "../components/ToastMessage";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCreateOrderMutation } from "../services/appApi";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
@@ -84,13 +84,13 @@ const UserCartPage = () => {
     decreaseCart(product);
   }
   return (
-    <Container className="product p-5">
+    <Container className="product p-5 mt-5">
       <h1 className="text-center">Shopping Cart</h1>
       <Row className="mt-5" data-aos="fade">
         {cart.length == 0 && (
           <Col>
             <Alert variant="info" className="text-center">
-              Shopping cart is empty . Add products to your cart
+              Votre Carte est Vide . Ajouter des Produits
             </Alert>
           </Col>
         )}
@@ -198,6 +198,12 @@ const UserCartPage = () => {
               </>
             </Col>
             <Col md={6}>
+              <Link
+                to="/update"
+                className=" mb-14 text-decoration-none fs-4 text-center"
+              >
+                <i className=" fas fa-edit"></i>Modifier
+              </Link>
               <Form onSubmit={handlePlaceOrder}>
                 <Row>
                   <Col md={6}>
@@ -261,10 +267,12 @@ const UserCartPage = () => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <label htmlFor="method_payment">Méthode de Paiement</label>
 
                 <Form.Select
                   name="paymentMethod"
+                  className=" w-50"
                   value={paymentMethod}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
