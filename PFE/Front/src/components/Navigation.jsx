@@ -171,6 +171,13 @@ function Navigation({ on, handleClick }) {
                         Votre Ordre
                       </NavDropdown.Item>
                     </LinkContainer>
+                    <LinkContainer to="/update">
+                      <NavDropdown.Item
+                        onMouseEnter={(e) => handleClick(e, on)}
+                      >
+                        Modfier Votre Compte
+                      </NavDropdown.Item>
+                    </LinkContainer>
                   </>
                 )}
                 <Button
